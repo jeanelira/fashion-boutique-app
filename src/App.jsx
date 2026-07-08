@@ -57,7 +57,6 @@ function ProductCard({ product }) {
       </div>
       <h4>{product.name}</h4>
       <span className="fit-recommendation">Seu tamanho ideal: {product.size}</span>
-      <small className="match-reason">Combina com seus favoritos</small>
       <p>{product.price}</p>
     </article>
   );
@@ -105,7 +104,6 @@ function PhoneShell({ activeTab, setActiveTab, children }) {
 function HomeScreen() {
   const [blockIndex, setBlockIndex] = useState(0);
   const block = homeBlocks[blockIndex];
-  const recentlyViewed = products.slice(1, 3);
 
   function go(delta) {
     setBlockIndex((current) => (current + delta + homeBlocks.length) % homeBlocks.length);
@@ -145,36 +143,11 @@ function HomeScreen() {
       </div>
 
       <section className="content-section">
-        <div className="home-personal-grid">
-          <article className="style-card">
-            <p className="eyebrow">Este aplicativo conhece seu estilo</p>
-            <h3>Romântico contemporâneo</h3>
-            <p>Quiz, tamanho, compras, favoritos, Clube e Provador Virtual juntos para orientar sua navegação.</p>
-            <div className="mini-pills">
-              <span>Vestidos</span>
-              <span>Tweed</span>
-              <span>Eventos</span>
-            </div>
-          </article>
-
-          <article className="continue-card">
-            <p className="eyebrow">Continue de onde parou</p>
-            <h3>Coleção Riviera</h3>
-            <p>Você favoritou peças leves e estava explorando ocasiões especiais.</p>
-            <button>Retomar navegação</button>
-          </article>
-        </div>
-      </section>
-
-      <section className="content-section">
-        <div className="signal-strip">
-          {customerSignals.map(([label, value]) => (
-            <article key={label}>
-              <span>{label}</span>
-              <strong>{value}</strong>
-            </article>
-          ))}
-        </div>
+        <article className="style-card clean">
+          <p className="eyebrow">Seu estilo TR</p>
+          <h3>Romântico contemporâneo</h3>
+          <p>Recomendações orientadas por quiz, favoritos e histórico, sem transformar a Home em catálogo infinito.</p>
+        </article>
       </section>
 
       <section className="content-section">
@@ -182,7 +155,8 @@ function HomeScreen() {
           <div>
             <p className="eyebrow">Provador Virtual</p>
             <h3>Compre com mais segurança</h3>
-            <p>Seu tamanho ideal aparece nas peças recomendadas para reduzir dúvidas e trocas.</p>
+            <p>Seu tamanho ideal aparece nas peças recomendadas.</p>
+            <button>Ajustar medidas</button>
           </div>
           <div className="fit-badge">
             <span>Seu tamanho ideal</span>
@@ -194,7 +168,7 @@ function HomeScreen() {
       <section className="content-section">
         <div className="section-title">
           <h3>Recomendações para você</h3>
-          <span>Quiz + tamanho</span>
+          <span>Curadoria curta</span>
         </div>
         <div className="horizontal-products">
           {products.slice(0, 3).map((product) => (
@@ -204,60 +178,20 @@ function HomeScreen() {
       </section>
 
       <section className="content-section">
-        <div className="section-title compact">
-          <h3>Vistos recentemente</h3>
-          <span>2 peças</span>
-        </div>
-        <div className="recently-viewed">
-          {recentlyViewed.map((product) => (
-            <article key={product.id}>
-              <img src={product.image} alt={product.name} />
-              <div>
-                <strong>{product.name}</strong>
-                <span>{product.color} · {product.price}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="content-section">
-        <article className="purchase-loop-card">
-          <div>
-            <p className="eyebrow">A partir do seu histórico</p>
-            <h3>Voltar para uma compra que funcionou</h3>
-            <p>Você comprou tweed e salvou vestidos para eventos. A curadoria prioriza peças com caimento e ocasião parecidos.</p>
-          </div>
-          <button>Ver peças similares</button>
-        </article>
-      </section>
-
-      <section className="content-section">
         <div className="club-card highlight club-journey">
           <div className="club-heading">
             <div>
               <p className="eyebrow">Clube das Migas</p>
-              <h2 className="screen-heading">Seu status na jornada</h2>
+              <h2 className="screen-heading">Nível Insider</h2>
             </div>
-            <strong>Nível Insider</strong>
+            <strong>1.680 pts</strong>
           </div>
-          <p>Use seus pontos e benefícios direto na compra, sem precisar procurar no Perfil.</p>
           <div className="club-stats">
-            <div><span>Pontos</span><strong>1.680</strong></div>
             <div><span>Economia</span><strong>R$ 86</strong></div>
-            <div><span>Próximo nível</span><strong>2.000</strong></div>
-          </div>
-          <div className="level-row">
-            <span>Faltam 320 pontos</span>
-            <span>84%</span>
+            <div><span>Próximo benefício</span><strong>Frete grátis</strong></div>
           </div>
           <div className="progress"><span /></div>
-          <div className="club-benefit-cards">
-            <article><span>✓</span><strong>Cupom ativo</strong><small>MIGAS10 na sacola</small></article>
-            <article><span>✓</span><strong>Acesso antecipado</strong><small>Novidades antes da vitrine</small></article>
-            <article><span>•</span><strong>Frete grátis</strong><small>Desbloqueia no próximo nível</small></article>
-          </div>
-          <Button full>Conhecer Clube das Migas</Button>
+          <Button full>Ver Clube das Migas</Button>
         </div>
       </section>
     </div>
@@ -527,21 +461,12 @@ export default function App() {
 
         <aside className="notes">
           <article className="executive-card principles-card">
-            <p className="eyebrow">Princípios da proposta</p>
+            <p className="eyebrow">Conceito da proposta</p>
             <h2>Uma evolução da experiência, não apenas um redesign</h2>
-            <div className="principles-grid">
-              {[
-                "Valorizar funcionalidades já existentes",
-                "Melhorar a descoberta de produtos",
-                "Integrar o Clube à jornada de compra",
-                "Destacar o Provador Virtual",
-                "Personalizar a experiência",
-                "Incentivar fidelização",
-                "Preservar a identidade premium da marca"
-              ].map((principle) => (
-                <div key={principle}><span>✓</span><strong>{principle}</strong></div>
-              ))}
-            </div>
+            <p>
+              A proposta reorganiza funcionalidades já existentes para tornar descoberta, compra, Clube das Migas
+              e Provador Virtual mais conectados, preservando a identidade premium da marca.
+            </p>
           </article>
 
           <article className="executive-card">
@@ -551,64 +476,6 @@ export default function App() {
               <div><strong>Funcionalidades dispersas</strong><span>Clube, quiz, favoritos e Provador aparecem como pontos separados.</span></div>
               <div><strong>Home pouco pessoal</strong><span>A experiência tende a parecer vitrine de campanha, não uma jornada da cliente.</span></div>
               <div><strong>Decisão de compra</strong><span>Tamanho, benefícios e histórico poderiam reduzir dúvida antes do checkout.</span></div>
-            </div>
-          </article>
-
-          <article>
-            <p className="eyebrow">Potencial</p>
-            <h2>Oportunidades</h2>
-            <div className="opportunity-bars">
-              <div><span>Personalização</span><strong style={{ "--bar": "92%" }} /></div>
-              <div><span>Fidelização</span><strong style={{ "--bar": "84%" }} /></div>
-              <div><span>Compra segura</span><strong style={{ "--bar": "78%" }} /></div>
-            </div>
-          </article>
-
-          <article className="executive-card">
-            <p className="eyebrow">Pensamento de produto</p>
-            <h2>Alavancas da proposta</h2>
-            <div className="lever-grid">
-              <div><strong>Retenção</strong><span>Home com continuidade, histórico e benefícios em evidência.</span></div>
-              <div><strong>Conversão</strong><span>Tamanho ideal e recomendação explicada reduzem dúvida.</span></div>
-              <div><strong>Recorrência</strong><span>Histórico de compras vira entrada para novas curadorias.</span></div>
-              <div><strong>Clube</strong><span>Pontos, economia e próximo nível aparecem na jornada de compra.</span></div>
-              <div><strong>Descoberta</strong><span>Coleções e Shop deixam de ser listas e viram curadoria.</span></div>
-              <div><strong>Personalização</strong><span>Quiz, favoritos, tamanho e compras alimentam toda a navegação.</span></div>
-            </div>
-          </article>
-
-          <article>
-            <p className="eyebrow">Direção de produto</p>
-            <h2>Objetivos</h2>
-            <ul className="check-list">
-              <li>Transformar dados da cliente em recomendações visíveis</li>
-              <li>Conectar Clube, Provador Virtual, quiz e favoritos à compra</li>
-              <li>Reduzir atrito na escolha de produto e tamanho</li>
-              <li>Manter a estética premium, editorial e minimalista</li>
-            </ul>
-          </article>
-
-          <article>
-            <p className="eyebrow">Experiência proposta</p>
-            <h2>Jornada proposta</h2>
-            <div className="journey-map">
-              {["Home personalizada", "Coleções orientadas", "Produto com tamanho", "Sacola com benefícios", "Clube/Fidelização"].map((step, index) => (
-                <div key={step}>
-                  <strong>{String(index + 1).padStart(2, "0")}</strong>
-                  <span>{step}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article>
-            <p className="eyebrow">Como medir</p>
-            <h2>Métricas de sucesso</h2>
-            <div className="success-metrics">
-              <div><strong>Conversão</strong><span>Adicionar à sacola, checkout iniciado, compra concluída.</span></div>
-              <div><strong>Recorrência</strong><span>Retorno ao app, recompra, uso de favoritos e histórico.</span></div>
-              <div><strong>Clube</strong><span>Visualização de benefícios, uso de cupom, evolução de nível.</span></div>
-              <div><strong>Descoberta</strong><span>Cliques em coleções, busca, produtos vistos e salvos.</span></div>
             </div>
           </article>
 
@@ -640,7 +507,7 @@ export default function App() {
           <article>
             <p className="eyebrow">Impacto esperado</p>
             <h2>Benefícios para a cliente</h2>
-            <div className="benefit-cards">
+            <div className="benefit-cards compact">
               <div><strong>Descoberta mais relevante</strong><span>Produtos alinhados ao estilo, tamanho e favoritos.</span></div>
               <div><strong>Compra mais segura</strong><span>Provador Virtual e tamanho ideal reduzem incerteza.</span></div>
               <div><strong>Valor percebido</strong><span>Clube, pontos, cupons e benefícios aparecem no momento certo.</span></div>
@@ -650,21 +517,12 @@ export default function App() {
           <article>
             <p className="eyebrow">Valor para a marca</p>
             <h2>Benefícios para o negócio</h2>
-            <div className="metric-grid">
+            <div className="metric-grid compact">
               <div><strong>+ Retenção</strong><span>Clube e personalização aumentam recorrência.</span></div>
               <div><strong>+ Conversão</strong><span>Menos dúvida entre descoberta, tamanho e checkout.</span></div>
               <div><strong>- Trocas</strong><span>Provador Virtual mais visível apoia compra correta.</span></div>
               <div><strong>+ Dados úteis</strong><span>Quiz, favoritos e histórico alimentam curadoria futura.</span></div>
             </div>
-          </article>
-
-          <article>
-            <p className="eyebrow">Princípios</p>
-            <h2>Premissas da proposta</h2>
-            <p>
-              A solução não copia a interface atual nem reinventa o produto. Ela reorganiza funcionalidades já
-              existentes para criar uma experiência mais integrada, personalizada e coerente com uma marca premium.
-            </p>
           </article>
         </aside>
       </section>

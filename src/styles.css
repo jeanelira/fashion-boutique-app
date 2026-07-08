@@ -400,6 +400,16 @@ code {
   color: var(--white);
 }
 
+.style-card.clean {
+  min-height: 136px;
+  display: grid;
+  align-content: end;
+}
+
+.style-card.clean p:not(.eyebrow) {
+  max-width: 360px;
+}
+
 .style-card .eyebrow,
 .club-card.highlight .eyebrow {
   color: var(--blush);
@@ -500,7 +510,7 @@ code {
 .virtual-fitting-card {
   padding: 16px;
   display: grid;
-  grid-template-columns: 1fr 92px;
+  grid-template-columns: 1fr 86px;
   gap: 14px;
   align-items: center;
   border: 1px solid var(--line-warm);
@@ -522,8 +532,19 @@ code {
   line-height: 1.45;
 }
 
+.virtual-fitting-card button {
+  min-height: 34px;
+  margin-top: 12px;
+  padding: 0 11px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-size: 10.5px;
+  font-weight: 900;
+}
+
 .fit-badge {
-  min-height: 92px;
+  min-height: 86px;
   padding: 12px;
   display: grid;
   align-content: center;
@@ -551,7 +572,7 @@ code {
 
 .horizontal-products {
   display: grid;
-  grid-template-columns: repeat(3, 140px);
+  grid-template-columns: repeat(3, 136px);
   gap: 12px;
   overflow: hidden;
 }
@@ -629,6 +650,7 @@ button:focus-visible {
   color: var(--ink);
   font-size: 10px;
   font-weight: 900;
+  line-height: 1.2;
 }
 
 .match-reason {
@@ -892,7 +914,7 @@ button:focus-visible {
 
 .club-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   margin-top: 14px;
 }
@@ -1314,6 +1336,11 @@ button:focus-visible {
   color: var(--white);
 }
 
+.principles-card p:not(.eyebrow) {
+  max-width: 780px;
+  color: rgba(255, 255, 255, .72);
+}
+
 .principles-grid {
   margin-top: 16px;
   display: grid;
@@ -1448,6 +1475,16 @@ button:focus-visible {
   padding: 14px;
   border: 1px solid var(--line);
   background: var(--paper);
+}
+
+.benefit-cards.compact div,
+.metric-grid.compact div {
+  min-height: 92px;
+}
+
+.benefit-cards.compact span,
+.metric-grid.compact span {
+  margin-top: 6px;
 }
 
 .insight-grid strong,

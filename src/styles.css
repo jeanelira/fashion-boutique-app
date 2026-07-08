@@ -169,7 +169,7 @@ code {
 
 .phone {
   width: min(100%, 540px);
-  min-height: 956px;
+  height: 956px;
   position: sticky;
   top: 24px;
   overflow: hidden;
@@ -217,7 +217,15 @@ code {
 }
 
 .phone-content {
-  min-height: 872px;
+  height: 872px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.phone-content::-webkit-scrollbar {
+  display: none;
 }
 
 .prototype-notice {
@@ -1284,6 +1292,8 @@ button:focus-visible {
   grid-template-columns: repeat(5, 1fr);
   border-top: 1px solid var(--line);
   background: rgba(255, 253, 250, .96);
+  z-index: 4;
+  backdrop-filter: blur(14px);
 }
 
 .bottom-nav button {
@@ -1705,7 +1715,8 @@ button:focus-visible {
   }
 
   .phone {
-    position: static;
+    position: relative;
+    top: auto;
   }
 
   .frames {

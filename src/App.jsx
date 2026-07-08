@@ -26,6 +26,7 @@ const customerSignals = [
   ["Tamanho", "P pelo Provador"],
   ["Compras", "Vestidos e tweed"],
   ["Favoritos", "Riviera e Origem"],
+  ["Guarda-roupa", "Combinações salvas"],
   ["Clube", "Nível Insider"]
 ];
 
@@ -145,8 +146,8 @@ function HomeScreen() {
       <section className="content-section">
         <article className="style-card clean">
           <p className="eyebrow">Seu estilo TR</p>
-          <h3>Romântico contemporâneo</h3>
-          <p>Recomendações orientadas por quiz, favoritos e histórico, sem transformar a Home em catálogo infinito.</p>
+          <h3>Escolhas que combinam com você</h3>
+          <p>Quiz, favoritos, guarda-roupa e histórico orientam uma curadoria romântica contemporânea no tamanho P.</p>
         </article>
       </section>
 
@@ -188,9 +189,10 @@ function HomeScreen() {
           </div>
           <div className="club-stats">
             <div><span>Economia</span><strong>R$ 86</strong></div>
-            <div><span>Próximo benefício</span><strong>Frete grátis</strong></div>
+            <div><span>Próxima conquista</span><strong>Frete grátis</strong></div>
           </div>
           <div className="progress"><span /></div>
+          <p className="club-context">Sua assinatura e esta compra aproximam você do próximo benefício.</p>
           <Button full>Ver Clube das Migas</Button>
         </div>
       </section>
@@ -220,7 +222,7 @@ function CollectionsScreen() {
       <div className="personal-context-card">
         <p className="eyebrow">Curadoria para você</p>
         <strong>Peças alinhadas ao seu quiz e ao tamanho P</strong>
-        <span>Priorizando coleções que você visitou, favoritos salvos e categorias compradas antes.</span>
+        <span>Coleções visitadas, favoritos, guarda-roupa e compras anteriores ajudam a ordenar a descoberta.</span>
       </div>
 
       {exploreGroups.map(([title, items]) => (
@@ -294,8 +296,9 @@ function BagScreen() {
       <div className="summary">
         <div><span>Seu tamanho</span><strong>Provador: P confirmado</strong></div>
         <div><span>Cupom</span><strong>MIGAS10 aplicado</strong></div>
+        <div><span>Assinatura</span><strong>R$ 85,80 economizados</strong></div>
         <div><span>Clube</span><strong>+ 172 pontos nesta compra</strong></div>
-        <div><span>Próximo nível</span><strong>Faltam 148 pontos após este pedido</strong></div>
+        <div><span>Próxima recompensa</span><strong>Faltam 148 pontos após este pedido</strong></div>
         <div><span>Subtotal</span><strong>R$ {subtotal.toFixed(2).replace(".", ",")}</strong></div>
         <div><span>Desconto</span><strong>- R$ {discount.toFixed(2).replace(".", ",")}</strong></div>
         <div className="total"><span>Total</span><strong>R$ {(subtotal - discount).toFixed(2).replace(".", ",")}</strong></div>
@@ -359,8 +362,10 @@ function ProfileScreen() {
       <div className="list">
         {[
           ["Clube das Migas", "Benefícios e pontos"],
+          ["Assinatura", "Economia e vantagens ativas"],
+          ["Favoritos", "Peças que você deseja"],
+          ["Guarda-roupa", "Compras e combinações"],
           ["Pedidos", "Acompanhe compras e entregas"],
-          ["Cupons", "Descontos exclusivos"],
           ["Configurações", "Conta e notificações"]
         ].map(([title, description]) => (
           <button className="list-row" key={title}>
@@ -427,8 +432,8 @@ export default function App() {
           <p className="eyebrow">Direção de produto</p>
           <h2>Uma experiência que reconhece a cliente</h2>
           <p>
-            A Home deixa de ser apenas uma sequência de campanhas e passa a orientar escolhas com estilo,
-            tamanho, Clube e histórico de navegação.
+            A Home combina narrativa editorial, descoberta fluida e personalização para orientar escolhas com
+            estilo, tamanho, favoritos, Clube e histórico de navegação.
           </p>
         </aside>
       </section>
@@ -444,7 +449,8 @@ export default function App() {
             <h2>Uma evolução da experiência, não apenas um redesign</h2>
             <p>
               A proposta reorganiza funcionalidades já existentes para tornar descoberta, compra, Clube das Migas
-              e Provador Virtual mais conectados, preservando a identidade premium da marca.
+              e Provador Virtual mais conectados. A inspiração está nos princípios de fluidez, storytelling e
+              fidelização contextual, preservando integralmente a identidade premium da marca.
             </p>
           </article>
 
@@ -478,6 +484,7 @@ export default function App() {
                   <li>Home personalizada e editorial.</li>
                   <li>Clube presente no momento de compra.</li>
                   <li>Tamanho ideal visível nos produtos.</li>
+                  <li>Favoritos e guarda-roupa apoiam novas escolhas.</li>
                 </ul>
               </div>
             </div>
@@ -497,7 +504,7 @@ export default function App() {
             <p className="eyebrow">Valor para a marca</p>
             <h2>Benefícios para o negócio</h2>
             <ul className="quiet-list">
-              <li><strong>Retenção</strong><span>Clube e personalização aumentam motivos para voltar.</span></li>
+              <li><strong>Retenção</strong><span>Clube, assinatura e curadoria criam motivos úteis para voltar.</span></li>
               <li><strong>Conversão</strong><span>Menos dúvida entre descoberta, tamanho e checkout.</span></li>
               <li><strong>Menos trocas</strong><span>Provador Virtual mais visível apoia compra correta.</span></li>
               <li><strong>Dados úteis</strong><span>Quiz, favoritos e histórico alimentam curadoria futura.</span></li>

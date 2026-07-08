@@ -80,8 +80,8 @@ export const homeBlocks = [
 ];
 
 export const featureFrames = [
-  ["Descoberta", "Home + Explorar", "Campanhas, coleções, busca, momentos de uso e recomendações"],
-  ["Compra", "Produto + Sacola", "Galeria, tamanho, favorito, cupom, subtotal e checkout"],
-  ["Relacionamento", "Clube + Quiz", "Pontos, benefícios, estilo pessoal, favoritos e fidelização"],
-  ["Pós-compra", "Perfil + Suporte", "Pedidos, avaliações, rastreamento, cupons e configurações"]
+  ["Descoberta", "Home + Explorar", "Campanhas, coleções e recomendações guiadas por quiz, favoritos e histórico"],
+  ["Compra", "Produto + Sacola", "Tamanho do Provador, economia da assinatura, pontos e próxima recompensa"],
+  ["Relacionamento", "Clube + Estilo", "Clube das Migas, assinatura, quiz, favoritos e benefícios conectados"],
+  ["Pós-compra", "Perfil + Guarda-roupa", "Pedidos, combinações, avaliações, rastreamento e novas sugestões"]
 ];

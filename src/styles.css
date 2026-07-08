@@ -68,9 +68,8 @@ code {
 }
 
 .intro > div:first-child,
-.notes article,
 .board,
-.tokens {
+.intro-statement {
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: 0 14px 48px rgba(64, 62, 60, .08);
@@ -78,6 +77,34 @@ code {
 
 .intro > div:first-child {
   padding: 28px;
+}
+
+.intro-statement {
+  padding: 28px;
+  display: grid;
+  align-content: end;
+  background:
+    linear-gradient(140deg, rgba(64, 62, 60, .98), rgba(64, 62, 60, .88)),
+    var(--ink);
+  color: var(--white);
+}
+
+.intro-statement .eyebrow {
+  color: var(--blush);
+}
+
+.intro-statement h2 {
+  margin: 0;
+  max-width: 420px;
+  font-size: 42px;
+  line-height: .98;
+}
+
+.intro-statement p:not(.eyebrow) {
+  max-width: 420px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 .eyebrow {
@@ -1296,12 +1323,13 @@ button:focus-visible {
 
 .notes {
   display: grid;
-  gap: 22px;
+  gap: 18px 24px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .notes article {
-  padding: 22px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid rgba(64, 62, 60, .12);
 }
 
 .notes article.executive-card,
@@ -1321,10 +1349,13 @@ button:focus-visible {
 }
 
 .principles-card {
+  padding: 24px !important;
+  border-bottom: 0 !important;
   background:
     linear-gradient(135deg, rgba(64, 62, 60, .98), rgba(64, 62, 60, .9)),
     var(--ink) !important;
   color: var(--white);
+  box-shadow: 0 14px 48px rgba(64, 62, 60, .08);
 }
 
 .principles-card .eyebrow {
@@ -1387,32 +1418,31 @@ button:focus-visible {
   font-weight: 800;
 }
 
-.comparison-list {
+.comparison-editorial {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 22px;
 }
 
-.comparison-list > div {
-  padding: 14px;
-  border: 1px solid var(--line);
-  background: var(--paper);
+.comparison-editorial > div {
+  padding-top: 14px;
+  border-top: 1px solid var(--line-warm);
 }
 
-.comparison-list strong {
+.comparison-editorial strong {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   color: var(--ink);
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
 
-.comparison-list p {
+.comparison-editorial p {
   color: var(--muted);
 }
 
-.comparison-list ul {
+.comparison-editorial ul {
   margin: 12px 0 0;
   padding: 0;
   display: grid;
@@ -1423,10 +1453,42 @@ button:focus-visible {
   line-height: 1.35;
 }
 
-.comparison-list li::before {
+.comparison-editorial li::before {
   content: "•";
   margin-right: 7px;
   color: var(--coral);
+}
+
+.editorial-list,
+.quiet-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+}
+
+.editorial-list p,
+.quiet-list li {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(64, 62, 60, .1);
+}
+
+.editorial-list strong,
+.quiet-list strong {
+  display: block;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.editorial-list span,
+.quiet-list span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .journey-flow {
@@ -1567,7 +1629,7 @@ button:focus-visible {
 
 .board {
   margin-top: 28px;
-  padding: 24px;
+  padding: 28px;
 }
 
 .board-heading h2 {
@@ -1582,31 +1644,37 @@ button:focus-visible {
 }
 
 .frames {
-  margin-top: 18px;
+  margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(4, minmax(220px, 1fr));
-  gap: 14px;
+  gap: 0;
+  border-top: 1px solid var(--line-warm);
 }
 
 .frame {
-  min-height: 160px;
-  border: 1px solid var(--line);
+  min-height: 150px;
+  padding: 18px 18px 0 0;
+  border: 0;
+  border-right: 1px solid rgba(64, 62, 60, .12);
   background: var(--paper);
   overflow: hidden;
 }
 
-.frame-top {
-  padding: 12px 14px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  background: var(--ink);
-  color: var(--white);
+.frame:last-child {
+  border-right: 0;
+}
+
+.frame > span {
+  display: block;
+  color: var(--coral);
   font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 
 .frame-body {
-  padding: 16px;
+  padding: 14px 0 0;
 }
 
 .frame-body h3 {
@@ -1661,7 +1729,7 @@ button:focus-visible {
   .lever-grid,
   .success-metrics,
   .principles-grid,
-  .comparison-list {
+  .comparison-editorial {
     grid-template-columns: 1fr;
   }
 }

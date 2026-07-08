@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,7 +11,7 @@ import {
   Star,
   UserRound
 } from "lucide-react";
-import { colors, featureFrames, homeBlocks, images, products } from "./data";
+import { featureFrames, homeBlocks, images, products } from "./data";
 
 const tabs = [
   { id: "home", label: "Home", icon: Home },
@@ -386,20 +386,17 @@ function FeatureBoard() {
   return (
     <section className="board">
       <div className="board-heading">
-        <p className="eyebrow">Board visual</p>
+        <p className="eyebrow">Estrutura do produto</p>
         <h2>Arquitetura proposta</h2>
         <p>
-          Esta parte funciona como uma prancha de produto: mostra o que entra no aplicativo real e como cada área se conecta.
+          A navegação mantém áreas familiares, mas passa a conectar descoberta, compra e relacionamento em uma jornada única.
         </p>
       </div>
 
       <div className="frames">
         {featureFrames.map(([title, subtitle, description], index) => (
           <article className="frame" key={title}>
-            <div className="frame-top">
-              <strong>{String(index + 1).padStart(2, "0")}</strong>
-              <span>{subtitle}</span>
-            </div>
+            <span>{String(index + 1).padStart(2, "0")} · {subtitle}</span>
             <div className="frame-body">
               <h3>{title}</h3>
               <p>{description}</p>
@@ -407,31 +404,6 @@ function FeatureBoard() {
           </article>
         ))}
       </div>
-    </section>
-  );
-}
-
-function DesignTokens() {
-  const tokenList = useMemo(
-    () => [
-      ["Off-white", colors.paper],
-      ["Areia", colors.sand],
-      ["Grafite", colors.ink],
-      ["Cinza quente", colors.muted],
-      ["Coral", colors.coral],
-      ["Rosa suave", colors.blush]
-    ],
-    []
-  );
-
-  return (
-    <section className="tokens">
-      {tokenList.map(([name, color]) => (
-        <div className="token" key={name} style={{ background: color }}>
-          <span>{name}</span>
-          <strong>{color}</strong>
-        </div>
-      ))}
     </section>
   );
 }
@@ -451,7 +423,14 @@ export default function App() {
             integrado e personalizado, conectando descoberta, compra, Clube das Migas e relacionamento com a cliente.
           </p>
         </div>
-        <DesignTokens />
+        <aside className="intro-statement">
+          <p className="eyebrow">Direção de produto</p>
+          <h2>Uma experiência que reconhece a cliente</h2>
+          <p>
+            A Home deixa de ser apenas uma sequência de campanhas e passa a orientar escolhas com estilo,
+            tamanho, Clube e histórico de navegação.
+          </p>
+        </aside>
       </section>
 
       <section className="workspace">
@@ -472,33 +451,33 @@ export default function App() {
           <article className="executive-card">
             <p className="eyebrow">Diagnóstico</p>
             <h2>Problemas observados</h2>
-            <div className="insight-grid">
-              <div><strong>Funcionalidades dispersas</strong><span>Clube, quiz, favoritos e Provador aparecem como pontos separados.</span></div>
-              <div><strong>Home pouco pessoal</strong><span>A experiência tende a parecer vitrine de campanha, não uma jornada da cliente.</span></div>
-              <div><strong>Decisão de compra</strong><span>Tamanho, benefícios e histórico poderiam reduzir dúvida antes do checkout.</span></div>
+            <div className="editorial-list">
+              <p><strong>Funcionalidades dispersas</strong><span>Clube, quiz, favoritos e Provador aparecem como pontos separados.</span></p>
+              <p><strong>Home pouco pessoal</strong><span>A experiência tende a parecer vitrine de campanha, não uma jornada da cliente.</span></p>
+              <p><strong>Decisão de compra</strong><span>Tamanho, benefícios e histórico podem reduzir dúvida antes do checkout.</span></p>
             </div>
           </article>
 
           <article className="comparison-card">
             <p className="eyebrow">Antes e depois</p>
             <h2>Experiência atual x proposta</h2>
-            <div className="comparison-list">
+            <div className="comparison-editorial">
               <div>
                 <strong>Experiência atual</strong>
-                <p>Funcionalidades boas, mas percebidas em momentos separados da navegação.</p>
+                <p>Funcionalidades boas, mas percebidas em momentos separados da navegação: campanhas, Clube, Provador e favoritos não parecem parte da mesma jornada.</p>
                 <ul>
-                  <li>Home mais focada em campanhas</li>
-                  <li>Clube com menor protagonismo</li>
-                  <li>Provador pouco conectado ao catálogo</li>
+                  <li>Home mais focada em campanhas.</li>
+                  <li>Clube com menor protagonismo.</li>
+                  <li>Provador pouco conectado ao catálogo.</li>
                 </ul>
               </div>
               <div>
                 <strong>Proposta</strong>
-                <p>Jornada integrada, usando dados já fornecidos para orientar descoberta e compra.</p>
+                <p>Jornada integrada, usando dados já fornecidos para orientar descoberta e compra com mais contexto, sem criar uma experiência artificial.</p>
                 <ul>
-                  <li>Home personalizada</li>
-                  <li>Clube dentro da compra</li>
-                  <li>Tamanho ideal visível nos produtos</li>
+                  <li>Home personalizada e editorial.</li>
+                  <li>Clube presente no momento de compra.</li>
+                  <li>Tamanho ideal visível nos produtos.</li>
                 </ul>
               </div>
             </div>
@@ -507,22 +486,22 @@ export default function App() {
           <article>
             <p className="eyebrow">Impacto esperado</p>
             <h2>Benefícios para a cliente</h2>
-            <div className="benefit-cards compact">
-              <div><strong>Descoberta mais relevante</strong><span>Produtos alinhados ao estilo, tamanho e favoritos.</span></div>
-              <div><strong>Compra mais segura</strong><span>Provador Virtual e tamanho ideal reduzem incerteza.</span></div>
-              <div><strong>Valor percebido</strong><span>Clube, pontos, cupons e benefícios aparecem no momento certo.</span></div>
-            </div>
+            <ul className="quiet-list">
+              <li><strong>Descoberta mais relevante</strong><span>Produtos alinhados ao estilo, tamanho e favoritos.</span></li>
+              <li><strong>Compra mais segura</strong><span>Provador Virtual e tamanho ideal reduzem incerteza.</span></li>
+              <li><strong>Valor percebido</strong><span>Clube, pontos e benefícios aparecem no momento certo.</span></li>
+            </ul>
           </article>
 
           <article>
             <p className="eyebrow">Valor para a marca</p>
             <h2>Benefícios para o negócio</h2>
-            <div className="metric-grid compact">
-              <div><strong>+ Retenção</strong><span>Clube e personalização aumentam recorrência.</span></div>
-              <div><strong>+ Conversão</strong><span>Menos dúvida entre descoberta, tamanho e checkout.</span></div>
-              <div><strong>- Trocas</strong><span>Provador Virtual mais visível apoia compra correta.</span></div>
-              <div><strong>+ Dados úteis</strong><span>Quiz, favoritos e histórico alimentam curadoria futura.</span></div>
-            </div>
+            <ul className="quiet-list">
+              <li><strong>Retenção</strong><span>Clube e personalização aumentam motivos para voltar.</span></li>
+              <li><strong>Conversão</strong><span>Menos dúvida entre descoberta, tamanho e checkout.</span></li>
+              <li><strong>Menos trocas</strong><span>Provador Virtual mais visível apoia compra correta.</span></li>
+              <li><strong>Dados úteis</strong><span>Quiz, favoritos e histórico alimentam curadoria futura.</span></li>
+            </ul>
           </article>
         </aside>
       </section>

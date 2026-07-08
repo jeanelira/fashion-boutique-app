@@ -1,0 +1,19 @@
+{
+  "name": "Proposta de Experiencia Mobile",
+  "short_name": "UX Proposal",
+  "description": "Prototipo navegavel da proposta de evolucao da experiencia mobile.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffdfa",
+  "theme_color": "#403e3c",
+  "icons": [
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

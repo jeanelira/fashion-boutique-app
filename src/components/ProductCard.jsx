@@ -43,6 +43,7 @@ function ProductCard({
         </IconButton>
       </div>
       <h4>{product.name}</h4>
+      {product.size ? <span className="fit-recommendation">Seu tamanho: {product.size}</span> : null}
       <p>{product.price}</p>
 
       {showSecondaryActions ? (

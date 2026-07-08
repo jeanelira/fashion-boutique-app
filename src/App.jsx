@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
+  Briefcase,
   Heart,
   Home,
   Menu,
@@ -9,6 +10,8 @@ import {
   ShoppingBag,
   Sparkles,
   Star,
+  Sun,
+  Shirt,
   UserRound
 } from "lucide-react";
 import { featureFrames, homeBlocks, images, products } from "./data";
@@ -105,96 +108,126 @@ function PhoneShell({ activeTab, setActiveTab, children }) {
 function HomeScreen() {
   const [blockIndex, setBlockIndex] = useState(0);
   const block = homeBlocks[blockIndex];
+  const intents = [
+    ["Trabalho", Briefcase],
+    ["Fim de semana", Sun],
+    ["Evento", Sparkles],
+    ["Básicos", Shirt]
+  ];
+  const collections = [
+    ["Origem", images.collection],
+    ["Mirage", images.productA],
+    ["Riviera", images.productD],
+    ["Eterno", images.productB]
+  ];
 
   function go(delta) {
     setBlockIndex((current) => (current + delta + homeBlocks.length) % homeBlocks.length);
   }
 
   return (
-    <div className="screen">
-      <section className="home-block" style={{ "--image": `url(${block.image})` }}>
+    <div className="screen home-screen">
+      <section className="home-greeting">
         <div>
-          <Badge>{block.eyebrow}</Badge>
+          <h1>Olá, Thais</h1>
+          <p>Encontramos novidades para você</p>
         </div>
-        <div>
+        <div className="home-shortcuts" aria-label="Atalhos pessoais">
+          <Heart size={23} />
+          <ShoppingBag size={22} />
+        </div>
+      </section>
+
+      <section className="home-block home-hero-card" style={{ "--image": `url(${block.image})` }}>
+        <div className="home-copy">
           <p className="eyebrow light">{block.eyebrow}</p>
           <h2>{block.title}</h2>
           <p>{block.text}</p>
           <Button variant="light">{block.action}</Button>
         </div>
+        <div className="hero-controls">
+          <IconButton onClick={() => go(-1)} label="Bloco anterior">
+            <ArrowLeft size={16} />
+          </IconButton>
+          <div className="dots">
+            {homeBlocks.map((item, index) => (
+              <button
+                key={item.title}
+                className={index === blockIndex ? "active" : ""}
+                onClick={() => setBlockIndex(index)}
+                aria-label={`Ir para ${item.title}`}
+              />
+            ))}
+          </div>
+          <IconButton onClick={() => go(1)} label="Próximo bloco">
+            <ArrowRight size={16} />
+          </IconButton>
+        </div>
       </section>
 
-      <div className="block-controls">
-        <IconButton onClick={() => go(-1)} label="Bloco anterior">
-          <ArrowLeft size={18} />
-        </IconButton>
-        <div className="dots">
-          {homeBlocks.map((item, index) => (
-            <button
-              key={item.title}
-              className={index === blockIndex ? "active" : ""}
-              onClick={() => setBlockIndex(index)}
-              aria-label={`Ir para ${item.title}`}
-            />
+      <section className="content-section">
+        <h3 className="home-question">O que você procura hoje?</h3>
+        <div className="intent-chips">
+          {intents.map(([label, Icon]) => (
+            <button type="button" key={label}>
+              <Icon size={17} />
+              <span>{label}</span>
+            </button>
           ))}
         </div>
-        <IconButton onClick={() => go(1)} label="Próximo bloco">
-          <ArrowRight size={18} />
-        </IconButton>
-      </div>
-
-      <section className="content-section">
-        <article className="style-card clean">
-          <p className="eyebrow">Seu estilo TR</p>
-          <h3>Escolhas que combinam com você</h3>
-          <p>Quiz, favoritos, guarda-roupa e histórico orientam uma curadoria romântica contemporânea no tamanho P.</p>
-        </article>
       </section>
 
       <section className="content-section">
-        <article className="virtual-fitting-card">
-          <div>
-            <p className="eyebrow">Provador Virtual</p>
-            <h3>Compre com mais segurança</h3>
-            <p>Seu tamanho ideal aparece nas peças recomendadas.</p>
-            <button>Ajustar medidas</button>
-          </div>
-          <div className="fit-badge">
-            <span>Seu tamanho ideal</span>
-            <strong>P</strong>
-          </div>
-        </article>
-      </section>
-
-      <section className="content-section">
-        <div className="section-title">
-          <h3>Recomendações para você</h3>
-          <span>Curadoria curta</span>
+        <div className="section-title editorial-row">
+          <h3>Lançamentos</h3>
+          <button type="button">Ver tudo <ArrowRight size={15} /></button>
         </div>
-        <div className="horizontal-products">
-          {products.slice(0, 3).map((product) => (
+        <div className="horizontal-products home-product-row">
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
       <section className="content-section">
-        <div className="club-card highlight club-journey">
-          <div className="club-heading">
-            <div>
-              <p className="eyebrow">Clube das Migas</p>
-              <h2 className="screen-heading">Nível Insider</h2>
-            </div>
-            <strong>1.680 pts</strong>
-          </div>
-          <div className="club-stats">
-            <div><span>Economia</span><strong>R$ 86</strong></div>
-            <div><span>Próxima conquista</span><strong>Frete grátis</strong></div>
-          </div>
-          <div className="progress"><span /></div>
-          <p className="club-context">Sua assinatura e esta compra aproximam você do próximo benefício.</p>
-          <Button full>Ver Clube das Migas</Button>
+        <div className="section-title editorial-row">
+          <h3>Coleções</h3>
+          <button type="button">Ver todas <ArrowRight size={15} /></button>
         </div>
+        <div className="home-collections">
+          {collections.map(([name, image]) => (
+            <button type="button" key={name} style={{ "--image": `url(${image})` }}>
+              <span>{name}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section">
+        <article className="personal-service-card">
+          <div className="service-mark">TR</div>
+          <div>
+            <div className="service-title">
+              <h3>Clube das Migas</h3>
+              <span>Insider</span>
+            </div>
+            <p>Você economizou R$ 86 este mês</p>
+            <small>320 pontos para o próximo nível</small>
+          </div>
+          <button type="button">Ver Clube das Migas <ArrowRight size={15} /></button>
+        </article>
+
+        <article className="personal-service-card fitting">
+          <div className="service-mark mannequin">P</div>
+          <div>
+            <div>
+              <h3>Provador Virtual</h3>
+              <p>Seu tamanho ideal</p>
+            </div>
+            <strong>P</strong>
+          </div>
+          <button type="button">Ajustar medidas <ArrowRight size={15} /></button>
+        </article>
       </section>
     </div>
   );

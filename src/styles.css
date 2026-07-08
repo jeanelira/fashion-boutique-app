@@ -253,6 +253,41 @@ code {
   padding: 18px 18px 92px;
 }
 
+.home-screen {
+  padding: 18px 18px 94px;
+  background: var(--paper);
+}
+
+.home-greeting {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.home-greeting h1 {
+  margin: 0;
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home-greeting p {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.home-shortcuts {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+  padding-top: 4px;
+  color: var(--ink);
+}
+
 .home-block {
   min-height: 476px;
   padding: 24px;
@@ -270,6 +305,19 @@ code {
   animation: rise .28s ease-out both;
 }
 
+.home-hero-card {
+  min-height: 278px;
+  padding-bottom: 58px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  justify-content: flex-end;
+  background-image:
+    linear-gradient(90deg, rgba(17, 17, 17, .6) 0%, rgba(17, 17, 17, .34) 40%, rgba(17, 17, 17, .06) 78%),
+    linear-gradient(180deg, rgba(17, 17, 17, .08) 0%, rgba(17, 17, 17, .12) 48%, rgba(17, 17, 17, .48) 100%),
+    var(--image);
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -282,12 +330,15 @@ code {
 }
 
 .home-copy {
-  max-width: 310px;
+  max-width: 294px;
+  position: relative;
+  z-index: 1;
 }
 
 .home-copy .button {
   margin-top: 8px;
   min-width: 158px;
+  min-height: 44px;
   box-shadow: 0 14px 34px rgba(17, 17, 17, .24);
 }
 
@@ -298,10 +349,41 @@ code {
   line-height: .98;
 }
 
+.home-hero-card h2 {
+  max-width: 260px;
+  font-size: 33px;
+  letter-spacing: .02em;
+}
+
 .home-block p {
   max-width: 300px;
   font-size: 14px;
   line-height: 1.45;
+}
+
+.hero-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hero-controls .icon-button,
+.hero-controls .dots button {
+  pointer-events: auto;
+}
+
+.hero-controls .icon-button {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(255, 255, 255, .42);
+  background: rgba(255, 255, 255, .72);
 }
 
 .badge {
@@ -378,12 +460,28 @@ code {
   background: var(--coral);
 }
 
+.hero-controls .dots button::after {
+  background: rgba(255, 255, 255, .7);
+}
+
+.hero-controls .dots button.active::after {
+  background: var(--white);
+}
+
 .content-section {
   padding: 18px;
 }
 
+.home-screen .content-section {
+  padding: 20px 0 0;
+}
+
 .content-section + .content-section {
   padding-top: 0;
+}
+
+.home-screen .content-section + .content-section {
+  padding-top: 28px;
 }
 
 .section-title {
@@ -414,6 +512,62 @@ code {
 
 .section-title.compact h3 {
   font-size: 23px;
+}
+
+.home-question {
+  margin: 0 0 14px;
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.intent-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.intent-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.intent-chips button {
+  min-height: 43px;
+  flex: 0 0 auto;
+  min-width: 96px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.editorial-row {
+  align-items: center;
+}
+
+.editorial-row button {
+  min-height: 34px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .home-personal-grid {
@@ -612,6 +766,11 @@ code {
   overflow: hidden;
 }
 
+.home-product-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -675,6 +834,11 @@ button:focus-visible {
   line-height: 1.25;
 }
 
+.home-product-row .product-card h4 {
+  min-height: 34px;
+  font-size: 12px;
+}
+
 .fit-recommendation {
   display: inline-flex;
   width: fit-content;
@@ -686,6 +850,23 @@ button:focus-visible {
   font-size: 10px;
   font-weight: 900;
   line-height: 1.2;
+}
+
+.home-product-row .fit-recommendation {
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.home-product-row .product-photo .badge {
+  display: none;
+}
+
+.home-product-row .product-photo .icon-button {
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border-color: rgba(255, 255, 255, .64);
 }
 
 .match-reason {
@@ -721,6 +902,135 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+}
+
+.home-collections {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-collections button {
+  min-height: 94px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  color: var(--white);
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, .03), rgba(17, 17, 17, .52)),
+    var(--image);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.home-collections span {
+  position: relative;
+  z-index: 1;
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+
+.personal-service-card {
+  min-height: 92px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 12px 30px rgba(64, 62, 60, .08);
+}
+
+.personal-service-card + .personal-service-card {
+  margin-top: 12px;
+}
+
+.service-mark {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-warm);
+  background: var(--sand);
+  color: var(--ink);
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.service-mark.mannequin {
+  font-size: 36px;
+}
+
+.service-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.personal-service-card h3 {
+  margin: 0;
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.service-title span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: var(--sand);
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.personal-service-card p,
+.personal-service-card small {
+  display: block;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.personal-service-card strong {
+  display: block;
+  margin-top: 2px;
+  font-family: "Josefin Sans", Urbanist, sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: .9;
+}
+
+.personal-service-card button {
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .collection-card,
